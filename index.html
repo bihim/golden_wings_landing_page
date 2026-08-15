@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>VOLT / EV Motorcycle</title>
+<style>
+  :root{
+    --cyan:#00f0ff;
+    --purple:#7a2be0;
+    --bg:#050308;
+    --card:rgba(255,255,255,0.05);
+    --border:rgba(255,255,255,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    background:var(--bg);
+    color:#f2f2f7;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    overflow-x:hidden;
+    width:100%;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(122,43,224,0.35), transparent),
+      radial-gradient(ellipse 80% 50% at 80% 110%, rgba(0,240,255,0.25), transparent);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(60px);
+    pointer-events:none;
+    z-index:0;
+    opacity:0.5;
+  }
+  .orb1{width:400px;height:400px;background:var(--purple);top:10%;left:-10%;}
+  .orb2{width:350px;height:350px;background:var(--cyan);top:60%;right:-8%;}
+  .orb3{width:280px;height:280px;background:var(--purple);bottom:5%;left:30%;}
+
+  header.nav{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.5rem 5%;
+    backdrop-filter:blur(10px);
+    background:rgba(5,3,8,0.35);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{
+    font-weight:800;
+    letter-spacing:0.3em;
+    font-size:1.1rem;
+    background:linear-gradient(90deg,var(--cyan),var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .nav-cta{
+    padding:0.5rem 1.3rem;
+    border-radius:999px;
+    border:1px solid var(--cyan);
+    color:var(--cyan);
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    text-decoration:none;
+  }
+
+  .stage{
+    position:relative;
+    z-index:2;
+  }
+  .panel{
+    position:relative;
+    height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem 5%;
+  }
+
+  #bike-wrap{
+    position:fixed;
+    top:0;left:0;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1;
+    pointer-events:none;
+  }
+  #bike-svg{
+    width:min(70vw, 900px);
+    height:auto;
+    filter:drop-shadow(0 0 40px rgba(0,240,255,0.35)) drop-shadow(0 0 80px rgba(122,43,224,0.25));
+  }
+
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.4em;
+    font-size:0.75rem;
+    color:var(--cyan);
+    margin-bottom:1.2rem;
+  }
+  h1.hero-title{
+    font-size:clamp(2.4rem, 7vw, 6rem);
+    font-weight:800;
+    line-height:1.02;
+    background:linear-gradient(90deg,#fff,var(--cyan) 60%,var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    max-width:14ch;
+  }
+  .hero-sub{
+    margin-top:1.4rem;
+    font-size:clamp(1rem,2vw,1.25rem);
+    color:#b8b8c8;
+    max-width:38ch;
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom:3rem;
+    font-size:0.75rem;
+    letter-spacing:0.3em;
+    color:#7a7a90;
+    text-transform:uppercase;
+  }
+
+  .section-title{
+    font-size:clamp(1.8rem,4.5vw,3.2rem);
+    font-weight:800;
+    margin-bottom:0.8rem;
+  }
+  .section-title .accent{
+    background:linear-gradient(90deg,var(--cyan),var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .section-desc{
+    max-width:32ch;
+    color:#b8b8c8;
+    margin-bottom:2.5rem;
+    font-size:1rem;
+  }
+
+  .glass{
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-radius:20px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.35);
+  }
+
+  .stat-grid{
+    display:flex;
+    gap:1.2rem;
+    flex-wrap:wrap;
+    justify-content:center;
+    max-width:900px;
+  }
+  .stat-card{
+    padding:2rem 1.6rem;
+    min-width:150px;
+    flex:1 1 150px;
+  }
+  .stat-num{
+    font-size:clamp(2rem,4vw,3rem);
+    font-weight:800;
+    color:var(--cyan);
+    text-shadow:0 0 20px rgba(0,240,255,0.5);
+  }
+  .stat-label{
+    margin-top:0.4rem;
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    color:#a0a0b8;
+    text-transform:uppercase;
+  }
+
+  .ai-card{
+    padding:2rem 2.2rem;
+    max-width:420px;
+    width:90%;
+  }
+  .battery-row{
+    display:flex;
+    align-items:flex-end;
+    gap:6px;
+    height:70px;
+    margin:1.4rem 0;
+  }
+  .bat-bar{
+    width:14px;
+    border-radius:4px 4px 0 0;
+    background:linear-gradient(180deg,var(--cyan),var(--purple));
+    box-shadow:0 0 12px rgba(0,240,255,0.6);
+  }
+  .ai-readout{
+    font-size:0.85rem;
+    color:#a0a0b8;
+    line-height:1.6;
+    text-align:left;
+  }
+  .ai-readout span{color:var(--cyan);font-weight:700;}
+
+  .cta-card{
+    padding:3rem 2.5rem;
+    max-width:520px;
+  }
+  .cta-btn{
+    display:inline-block;
+    margin-top:1.8rem;
+    padding:1rem 2.6rem;
+    border-radius:999px;
+    border:none;
+    font-size:1rem;
+    font-weight:700;
+    letter-spacing:0.05em;
+    color:#050308;
+    background:linear-gradient(90deg,var(--cyan),var(--purple));
+    box-shadow:0 0 30px rgba(0,240,255,0.5), 0 0 60px rgba(122,43,224,0.3);
+    cursor:pointer;
+    transition:transform 0.25s ease;
+  }
+  .cta-btn:hover{transform:scale(1.05);}
+
+  footer{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:2.5rem 1rem;
+    color:#6a6a80;
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+  }
+
+  @media (max-width:768px){
+    #bike-svg{width:88vw;}
+    .stat-grid{gap:0.8rem;}
+    .stat-card{padding:1.4rem 1rem;min-width:110px;}
+    .ai-card,.cta-card{padding:1.8rem 1.4rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<header class="nav">
+  <div class="logo">VOLT&nbsp;/&nbsp;01</div>
+  <a class="nav-cta" href="#reserve">Reserve</a>
+</header>
+
+<div id="bike-wrap">
+  <svg id="bike-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="wheelGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f0ff"/>
+        <stop offset="100%" stop-color="#7a2be0"/>
+      </linearGradient>
+      <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#12101a"/>
+        <stop offset="100%" stop-color="#1e1a2e"/>
+      </linearGradient>
+      <linearGradient id="battGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#00f0ff"/>
+        <stop offset="100%" stop-color="#7a2be0"/>
+      </linearGradient>
+      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="6" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <ellipse cx="450" cy="430" rx="360" ry="22" fill="#00f0ff" opacity="0.08"/>
+
+    <!-- rear wheel -->
+    <g id="wheelRear" transform="translate(210,340)">
+      <circle r="95" fill="none" stroke="url(#wheelGlow)" stroke-width="30" opacity="0.5"/>
+      <circle r="80" fill="#0a0912" stroke="url(#frameGrad)" stroke-width="4"/>
+      <circle r="80" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.4"/>
+      <g stroke="url(#frameGrad)" stroke-width="3" filter="url(#softGlow)">
+        <line x1="0" y1="-70" x2="0" y2="70"/>
+        <line x1="-70" y1="0" x2="70" y2="0"/>
+        <line x1="-49" y1="-49" x2="49" y2="49"/>
+        <line x1="-49" y1="49" x2="49" y2="-49"/>
+        <line x1="-25" y1="-67" x2="25" y2="67"/>
+        <line x1="25" y1="-67" x2="-25" y2="67"/>
+        <line x1="-67" y1="-25" x2="67" y2="25"/>
+        <line x1="-67" y1="25" x2="67" y2="-25"/>
+      </g>
+      <circle r="14" fill="url(#battGrad)"/>
+    </g>
+
+    <!-- front wheel -->
+    <g id="wheelFront" transform="translate(690,340)">
+      <circle r="95" fill="none" stroke="url(#wheelGlow)" stroke-width="30" opacity="0.5"/>
+      <circle r="80" fill="#0a0912" stroke="url(#frameGrad)" stroke-width="4"/>
+      <circle r="80" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.4"/>
+      <g stroke="url(#frameGrad)" stroke-width="3" filter="url(#softGlow)">
+        <line x1="0" y1="-70" x2="0" y2="70"/>
+        <line x1="-70" y1="0" x2="70" y2="0"/>
+        <line x1="-49" y1="-49" x2="49" y2="49"/>
+        <line x1="-49" y1="49" x2="49" y2="-49"/>
+        <line x1="-25" y1="-67" x2="25" y2="67"/>
+        <line x1="25" y1="-67" x2="-25" y2="67"/>
+        <line x1="-67" y1="-25" x2="67" y2="25"/>
+        <line x1="-67" y1="25" x2="67" y2="-25"/>
+      </g>
+      <circle r="14" fill="url(#battGrad)"/>
+    </g>
+
+    <!-- swingarm / forks -->
+    <path d="M 250 330 L 400 300 L 300 355 Z" fill="url(#frameGrad)" opacity="0.85"/>
+    <path d="M 660 330 L 620 250 L 600 355 Z" fill="url(#frameGrad)" opacity="0.85"/>
+    <line x1="690" y1="340" x2="640" y2="200" stroke="url(#frameGrad)" stroke-width="10" stroke-linecap="round" filter="url(#softGlow)"/>
+    <line x1="690" y1="340" x2="655" y2="215" stroke="url(#frameGrad)" stroke-width="10" stroke-linecap="round" filter="url(#softGlow)"/>
+
+    <!-- main body / battery pack -->
+    <path d="M 300 355
+             C 320 260, 380 220, 460 215
+             C 540 210, 590 220, 620 250
+             L 600 300
+             C 560 270, 480 260, 420 275
+             C 370 288, 330 320, 300 355 Z"
+          fill="url(#bodyGrad)" stroke="url(#frameGrad)" stroke-width="2.5"/>
+
+    <!-- battery indicator bars on body -->
+    <g transform="translate(400,240)">
+      <rect x="0"  y="24" width="10" height="20" rx="2" fill="url(#battGrad)" filter="url(#softGlow)"/>
+      <rect x="16" y="16" width="10" height="28" rx="2" fill="url(#battGrad)" filter="url(#softGlow)"/>
+      <rect x="32" y="8"  width="10" height="36" rx="2" fill="url(#battGrad)" filter="url(#softGlow)"/>
+      <rect x="48" y="0"  width="10" height="44" rx="2" fill="url(#battGrad)" filter="url(#softGlow)"/>
+    </g>
+
+    <!-- seat -->
+    <path d="M 300 250 C 340 235, 380 235, 400 245 L 380 265 C 350 260, 320 262, 300 270 Z"
+          fill="#1a1626" stroke="url(#frameGrad)" stroke-width="2"/>
+
+    <!-- handlebar / headlight stalk -->
+    <line x1="640" y1="200" x2="660" y2="170" stroke="url(#frameGrad)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="662" cy="165" r="10" fill="#00f0ff" filter="url(#softGlow)"/>
+
+    <!-- neon underglow line -->
+    <path d="M 260 350 C 350 300, 550 300, 660 335"
+          fill="none" stroke="#00f0ff" stroke-width="2" opacity="0.6" filter="url(#softGlow)"/>
+  </svg>
+</div>
+
+<main class="stage">
+
+  <section class="panel" id="hero">
+    <div class="eyebrow">Zero Compromise / Zero Emissions</div>
+    <h1 class="hero-title">Ride the current.</h1>
+    <p class="hero-sub">An electric motorcycle engineered for silence, speed, and a horizon that never runs out.</p>
+    <div class="scroll-hint">Scroll to ignite ↓</div>
+  </section>
+
+  <section class="panel" id="torque">
+    <div class="eyebrow">Performance</div>
+    <h2 class="section-title">Pure <span class="accent">Torque.</span></h2>
+    <p class="section-desc">Instant power delivery from a triple-motor drivetrain. No gears, no delay.</p>
+    <div class="stat-grid">
+      <div class="glass stat-card">
+        <div class="stat-num" data-count="3.2" data-suffix="s">0</div>
+        <div class="stat-label">0&ndash;100 km/h</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-num" data-count="240" data-suffix="+">0</div>
+        <div class="stat-label">km Range</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-num" data-count="180" data-suffix=""> 0</div>
+        <div class="stat-label">Top Speed km/h</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-num" data-count="220" data-suffix="Nm">0</div>
+        <div class="stat-label">Peak Torque</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="intelligence">
+    <div class="eyebrow">Onboard AI</div>
+    <h2 class="section-title">Adaptive <span class="accent">Intelligence.</span></h2>
+    <div class="glass ai-card">
+      <div class="battery-row" id="battRow">
+        <div class="bat-bar" style="height:20%"></div>
+        <div class="bat-bar" style="height:40%"></div>
+        <div class="bat-bar" style="height:60%"></div>
+        <div class="bat-bar" style="height:80%"></div>
+        <div class="bat-bar" style="height:100%"></div>
+        <div class="bat-bar" style="height:70%"></div>
+        <div class="bat-bar" style="height:90%"></div>
+      </div>
+      <div class="ai-readout">
+        Neural power management learns your route, terrain, and riding style &mdash;
+        reallocating cell output in real time for <span>+18% efficiency</span>.
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="reserve">
+    <div class="eyebrow">Limited First Run</div>
+    <h2 class="section-title">Own the <span class="accent">Future.</span></h2>
+    <div class="glass cta-card">
+      <p class="section-desc" style="margin-bottom:0;">Reserve your VOLT/01 today with a fully refundable deposit. Deliveries begin Q2.</p>
+      <button class="cta-btn" type="button">Reserve Now &rarr;</button>
+    </div>
+  </section>
+
+</main>
+
+<footer>&copy; 2026 VOLT MOTORS &mdash; Concept Pitch Build</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// orb float
+gsap.to(".orb1",{y:60,x:30,duration:9,repeat:-1,yoyo:true,ease:"sine.inOut"});
+gsap.to(".orb2",{y:-50,x:-40,duration:11,repeat:-1,yoyo:true,ease:"sine.inOut"});
+gsap.to(".orb3",{y:40,x:-20,duration:7,repeat:-1,yoyo:true,ease:"sine.inOut"});
+
+// idle wheel spin (ambient)
+gsap.to("#wheelRear",{rotation:360,transformOrigin:"50% 50%",duration:2.4,repeat:-1,ease:"none"});
+gsap.to("#wheelFront",{rotation:360,transformOrigin:"50% 50%",duration:2.4,repeat:-1,ease:"none"});
+
+const sections = ["#hero","#torque","#intelligence","#reserve"];
+
+sections.forEach((sel)=>{
+  ScrollTrigger.create({
+    trigger: sel,
+    start: "top top",
+    end: "bottom top",
+    pin: false
+  });
+});
+
+// master scrub timeline moving/rotating/scaling bike across whole page
+const bikeTL = gsap.timeline({
+  scrollTrigger:{
+    trigger:".stage",
+    start:"top top",
+    end:"bottom bottom",
+    scrub:1
+  }
+});
+
+bikeTL
+  .to("#bike-svg",{ xPercent:0, y:0, scale:1, rotate:0, duration:1 },0)
+  .to("#bike-svg",{ xPercent:-35, y:-40, scale:0.85, rotate:-8, duration:1 },1)
+  .to("#bike-svg",{ xPercent:30, y:20, scale:1.1, rotate:6, duration:1 },2)
+  .to("#bike-svg",{ xPercent:0, y:-10, scale:0.95, rotate:0, duration:1 },3);
+
+// pin each panel briefly for that Apple-style hold
+sections.forEach((sel)=>{
+  ScrollTrigger.create({
+    trigger: sel,
+    start:"top top",
+    end:"+=100%",
+    pin: true,
+    pinSpacing: true
+  });
+});
+
+// fade/scale content in per panel
+sections.forEach((sel)=>{
+  const el = document.querySelector(sel);
+  const items = el.querySelectorAll(".eyebrow,.hero-title,.hero-sub,.section-title,.section-desc,.glass,.scroll-hint");
+  gsap.set(items,{opacity:0,y:40});
+  ScrollTrigger.create({
+    trigger: sel,
+    start:"top center",
+    onEnter:()=>gsap.to(items,{opacity:1,y:0,duration:0.8,stagger:0.08,ease:"power3.out"}),
+    onEnterBack:()=>gsap.to(items,{opacity:1,y:0,duration:0.8,stagger:0.08,ease:"power3.out"}),
+    onLeave:()=>gsap.to(items,{opacity:0,y:-30,duration:0.5}),
+    onLeaveBack:()=>gsap.to(items,{opacity:0,y:30,duration:0.5})
+  });
+});
+
+// count-up stats
+document.querySelectorAll(".stat-num").forEach((el)=>{
+  const target = parseFloat(el.dataset.count);
+  const suffix = el.dataset.suffix || "";
+  const isDecimal = target % 1 !== 0;
+  const obj = { val: 0 };
+  ScrollTrigger.create({
+    trigger:"#torque",
+    start:"top center",
+    once:true,
+    onEnter:()=>{
+      gsap.to(obj,{
+        val:target,
+        duration:1.6,
+        ease:"power2.out",
+        onUpdate:()=>{
+          el.textContent = (isDecimal ? obj.val.toFixed(1) : Math.round(obj.val)) + suffix;
+        }
+      });
+    }
+  });
+});
+
+// battery bars grow-in on scroll into intelligence
+gsap.set("#battRow .bat-bar",{scaleY:0,transformOrigin:"bottom"});
+ScrollTrigger.create({
+  trigger:"#intelligence",
+  start:"top center",
+  once:true,
+  onEnter:()=>{
+    gsap.to("#battRow .bat-bar",{scaleY:1,duration:0.8,stagger:0.08,ease:"back.out(1.7)"});
+  }
+});
+
+ScrollTrigger.refresh();
+</script>
+</body>
+</html>
