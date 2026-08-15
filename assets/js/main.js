@@ -1,5 +1,5 @@
 /* =========================================================
-   VOSENBON landing page — vanilla JS
+   GOLDEN CROWN landing page — vanilla JS
    Lenis smooth scroll + GSAP ScrollTrigger reveals/counters.
    ========================================================= */
 (function () {
@@ -184,9 +184,9 @@
     });
   }
 
-  var panels = document.querySelectorAll(".showcase-panel");
+  var copyPanels = document.querySelectorAll(".showcase-copy");
   if (hasGsap && window.ScrollTrigger) {
-    panels.forEach(function (panel) {
+    copyPanels.forEach(function (panel) {
       ScrollTrigger.create({
         trigger: panel,
         start: "top 75%",
@@ -195,28 +195,64 @@
     });
   }
 
+  /* ---------------- Typing effect for tagline/name ---------------- */
+  function typeText(el, speed) {
+    if (el.dataset.fullText === undefined) el.dataset.fullText = el.textContent;
+    var full = el.dataset.fullText;
+    if (reduceMotion) { el.textContent = full; return; }
+    el.textContent = "";
+    var cursor = document.createElement("span");
+    cursor.className = "typing-cursor";
+    el.appendChild(cursor);
+    var i = 0;
+    var timer = setInterval(function () {
+      cursor.insertAdjacentText("beforebegin", full[i]);
+      i++;
+      if (i >= full.length) {
+        clearInterval(timer);
+        setTimeout(function () { cursor.remove(); }, 500);
+      }
+    }, speed);
+  }
+
   /* ---------------- Model showcase tabs ---------------- */
   var tabs = document.querySelectorAll(".showcase-tab");
   tabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
-      var target = tab.getAttribute("data-target");
+      if (tab.classList.contains("is-active")) return;
+      var slug = tab.getAttribute("data-target");
+      var nextArt = document.getElementById("art-" + slug);
+      var nextCopy = document.getElementById("copy-" + slug);
+      var currentArt = document.querySelector(".showcase-art.is-active");
+      var currentCopy = document.querySelector(".showcase-copy.is-active");
+      if (!nextArt || !nextCopy || nextCopy === currentCopy) return;
+
       tabs.forEach(function (t) { t.classList.toggle("is-active", t === tab); });
-      panels.forEach(function (p) {
-        var active = p.id === target;
-        p.classList.toggle("is-active", active);
-        if (active) animateCounters(p);
+
+      /* image: crossfade */
+      if (currentArt) currentArt.classList.remove("is-active");
+      nextArt.classList.add("is-active");
+
+      /* copy: instant swap, text fields type in, stats count up */
+      if (currentCopy) currentCopy.classList.remove("is-active");
+      nextCopy.classList.add("is-active");
+      typeText(nextCopy.querySelector(".showcase-panel__tagline"), 28);
+      typeText(nextCopy.querySelector(".showcase-panel__name"), 35);
+      nextCopy.querySelectorAll(".stat-chip__value[data-count-to]").forEach(function (el) {
+        delete el.dataset.counted;
       });
+      animateCounters(nextCopy);
       if (window.ScrollTrigger) ScrollTrigger.refresh();
     });
   });
-  if (panels.length) animateCounters(panels[0]);
+  if (copyPanels.length) animateCounters(copyPanels[0]);
 
   /* ---------------- Cost-savings calculator ---------------- */
   // PLACEHOLDER ASSUMPTIONS — replace with real Bangladesh fuel/electricity figures before launch.
   var PETROL_PRICE_PER_LITRE_BDT = 125;   // BDT per litre, placeholder (approx market rate)
   var PETROL_KM_PER_LITRE = 40;           // avg petrol bike mileage, placeholder
   var ELECTRICITY_COST_PER_FULL_CHARGE_BDT = 18; // BDT per full charge, placeholder
-  var RANGE_PER_CHARGE_KM = 90;           // VOSENBON avg range per charge, placeholder
+  var RANGE_PER_CHARGE_KM = 90;           // GOLDEN CROWN avg range per charge, placeholder
   var DAYS_PER_MONTH = 30;
 
   var distanceSlider = document.getElementById("calc-distance");
@@ -251,8 +287,8 @@
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      // TODO: replace this block with a POST to the VOSENBON CRM API endpoint.
-      // e.g. fetch("https://api.vosenbon.com/leads", { method: "POST", body: new FormData(form) })
+      // TODO: replace this block with a POST to the GOLDEN CROWN CRM API endpoint.
+      // e.g. fetch("https://api.goldencrown.com/leads", { method: "POST", body: new FormData(form) })
       form.classList.add("is-hidden");
       formSuccess.classList.add("is-visible");
     });

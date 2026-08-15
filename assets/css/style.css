@@ -1,5 +1,5 @@
 /* =========================================================
-   VOSENBON — "Voltage Night" design system
+   GOLDEN CROWN — "Voltage Night" design system
    Dhaka expressway at night x racing telemetry dashboard.
    ========================================================= */
 
@@ -138,9 +138,9 @@ h1, h2, h3, h4 {
 }
 .header .container { display: flex; align-items: center; justify-content: space-between; }
 
-.logo { display: flex; align-items: baseline; gap: 8px; font-family: var(--font-display); }
-.logo__mark { font-size: 24px; font-weight: 700; letter-spacing: 0.02em; }
-.logo__mark span { color: var(--accent); }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); }
+.logo__image { width: 44px; height: 44px; object-fit: contain; }
+.footer__brand .logo__image { width: 52px; height: 52px; margin-bottom: 4px; }
 .logo__tag { display: none; font-size: 10px; letter-spacing: 0.2em; color: var(--text-faint); text-transform: uppercase; }
 @media (min-width: 768px) { .logo__tag { display: block; } }
 
@@ -260,27 +260,27 @@ h1, h2, h3, h4 {
 
 .hero__stage {
   position: relative;
-  min-height: 340px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 480px;
+  padding-bottom: 56px;
 }
 .hero__slide {
   position: absolute;
   inset: 0;
+  bottom: 56px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.6s var(--ease);
+  transform: scale(0.97);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), visibility 0s linear 0.7s;
 }
-.hero__slide.is-active { opacity: 1; visibility: visible; position: relative; }
-.hero__slide-illustration { width: min(92%, 460px); color: var(--accent); filter: drop-shadow(0 20px 40px rgba(198,255,0,0.12)); }
-.hero__slide-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.1em; margin-top: 12px; color: var(--text-dim); }
+.hero__slide.is-active { opacity: 1; visibility: visible; transform: scale(1); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.hero__slide-illustration { width: min(100%, 620px); color: var(--accent); filter: drop-shadow(0 20px 40px rgba(198,255,0,0.12)); }
+.hero__slide-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.1em; margin-top: 12px; color: var(--text-dim); text-align: center; }
 
-.hero__dots { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+.hero__dots { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: flex; gap: 10px; }
 .hero__dot {
   width: 34px; height: 3px;
   background: var(--line);
@@ -328,11 +328,24 @@ h1, h2, h3, h4 {
 }
 .showcase-tab.is-active, .showcase-tab:hover { border-color: var(--accent); color: var(--accent); background: rgba(198,255,0,0.06); }
 
-.showcase-panel { display: none; }
-.showcase-panel.is-active { display: grid; grid-template-columns: 1fr; gap: 40px; }
-@media (min-width: 900px) { .showcase-panel.is-active { grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; } }
+.showcase-stage-wrap { display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 900px) { .showcase-stage-wrap { grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; } }
 
-.showcase-panel__art { color: var(--accent); background: radial-gradient(ellipse at center, rgba(198,255,0,0.08), transparent 70%); border-radius: 12px; padding: 30px; }
+.showcase-art-stage { position: relative; min-height: 420px; color: var(--accent); background: radial-gradient(ellipse at center, rgba(198,255,0,0.08), transparent 70%); border-radius: 12px; padding: 30px; }
+.showcase-art {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transform: scale(0.97);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease), visibility 0s linear 0.6s;
+}
+.showcase-art.is-active { opacity: 1; visibility: visible; transform: scale(1); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.showcase-art img { width: 100%; max-width: 620px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(198,255,0,0.12)); }
+
+.showcase-copy-stage { position: relative; }
+.showcase-copy { display: none; }
+.showcase-copy.is-active { display: block; }
+.typing-cursor { display: inline-block; width: 2px; height: 1em; margin-left: 2px; background: var(--accent); vertical-align: -0.15em; animation: typing-blink 0.8s steps(1) infinite; }
+@keyframes typing-blink { 50% { opacity: 0; } }
 .showcase-panel__tagline { color: var(--accent); font-family: var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; font-size: 14px; margin-top: 10px; }
 .showcase-panel__name { font-size: clamp(30px, 4vw, 48px); margin-top: 10px; }
 .showcase-panel__desc { color: var(--text-dim); margin-top: 16px; max-width: 460px; }
@@ -422,10 +435,14 @@ h1, h2, h3, h4 {
 .form-success p { margin-top: 12px; color: var(--text-dim); }
 .contact-form.is-hidden { display: none; }
 
+.contact-side { display: flex; flex-direction: column; gap: 24px; }
 .contact-aside { padding: 34px; background: var(--bg-panel-2); border-radius: 10px; border: 1px solid var(--line); height: fit-content; }
 .contact-aside h3 { font-size: 18px; }
 .contact-aside p { color: var(--text-dim); margin-top: 12px; font-size: 14.5px; line-height: 1.7; }
 .contact-aside__row { display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid var(--line); font-size: 14px; }
+
+.contact-map { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.contact-map iframe { width: 100%; height: 320px; display: block; }
 
 /* ---------- footer ---------- */
 .footer { padding: 70px 0 30px; border-top: 1px solid var(--line); background: var(--bg-panel); }
