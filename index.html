@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VOSENBON — Ride Smarter. Ride Electric.</title>
+<meta name="description" content="VOSENBON electric bikes for Bangladesh's streets. Up to 120km per charge, zero petrol cost. Explore the X1, X5, X9 and C3 range and calculate your savings." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="VOSENBON — Ride Smarter. Ride Electric." />
+<meta property="og:description" content="Electric bikes built for Bangladesh. See your savings vs petrol and explore the VOSENBON range." />
+<meta property="og:image" content="assets/images/favicon.svg" />
+
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="container">
+    <a href="#hero" class="logo" aria-label="VOSENBON home">
+      <span class="logo__mark">VOSEN<span>BON</span></span>
+      <span class="logo__tag">Electric Mobility</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__item nav__item--has-mega">
+        <a href="#showcase" class="nav__link">Products</a>
+        <div class="mega">
+          <a class="mega__link" href="#model-x1">VOSENBON X1 <small>Entry Commuter</small></a>
+          <a class="mega__link" href="#model-x5">VOSENBON X5 <small>Mid-range City</small></a>
+          <a class="mega__link" href="#model-x9">VOSENBON X9 <small>Flagship Performance</small></a>
+          <a class="mega__link" href="#model-c3">VOSENBON C3 <small>Style / Youth</small></a>
+        </div>
+      </div>
+      <div class="nav__item"><a href="#features" class="nav__link">About</a></div>
+      <div class="nav__item"><a href="#dealers" class="nav__link">Service Support</a></div>
+      <div class="nav__item"><a href="#dealers" class="nav__link">Find a Store</a></div>
+      <div class="nav__item"><a href="#contact" class="nav__link">Schedule a Ride</a></div>
+    </nav>
+
+    <div class="header__cta">
+      <a href="#contact" class="btn btn--primary btn--sm">Schedule a Ride</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" aria-label="Mobile menu">
+  <a href="#showcase">Products</a>
+  <a href="#features">About</a>
+  <a href="#dealers">Service Support</a>
+  <a href="#dealers">Find a Store</a>
+  <a href="#contact">Schedule a Ride</a>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__streak" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero__copy">
+      <span class="hero__eyebrow eyebrow" style="opacity:0;transform:translateY(20px)">VOSENBON Electric</span>
+      <h1 class="hero__headline">
+        <span class="line"><span style="opacity:0;transform:translateY(30px)">Ride Smarter.</span></span>
+        <span class="line"><span class="is-accent" style="opacity:0;transform:translateY(30px)">Ride Electric.</span></span>
+      </h1>
+      <p class="hero__sub" style="opacity:0;transform:translateY(20px)">
+        Electric bikes engineered for Bangladesh's streets — up to 120km per charge,
+        zero petrol cost, and a design that turns heads on Dhaka's roads.
+      </p>
+      <div class="hero__actions" style="opacity:0;transform:translateY(20px)">
+        <a href="#calculator" class="btn btn--primary">See Your Savings</a>
+        <a href="#showcase" class="btn btn--ghost">Explore Models</a>
+      </div>
+    </div>
+
+    <div class="hero__stage" style="opacity:0">
+      <!-- PLACEHOLDER ILLUSTRATIONS — TO BE REPLACED WITH REAL PRODUCT PHOTOGRAPHY -->
+      <div class="hero__slide is-active">
+        <img class="hero__slide-illustration" src="assets/images/svg/bikes/vosenbon-x1.svg" alt="VOSENBON X1 electric scooter illustration" loading="eager" />
+        <span class="hero__slide-name">VOSENBON X1 — Entry Commuter</span>
+      </div>
+      <div class="hero__slide">
+        <img class="hero__slide-illustration" src="assets/images/svg/bikes/vosenbon-x5.svg" alt="VOSENBON X5 electric scooter illustration" loading="lazy" />
+        <span class="hero__slide-name">VOSENBON X5 — Mid-range City</span>
+      </div>
+      <div class="hero__slide">
+        <img class="hero__slide-illustration" src="assets/images/svg/bikes/vosenbon-x9.svg" alt="VOSENBON X9 flagship electric scooter illustration" loading="lazy" />
+        <span class="hero__slide-name">VOSENBON X9 — Flagship Performance</span>
+      </div>
+      <div class="hero__slide">
+        <img class="hero__slide-illustration" src="assets/images/svg/bikes/vosenbon-c3.svg" alt="VOSENBON C3 electric scooter illustration" loading="lazy" />
+        <span class="hero__slide-name">VOSENBON C3 — Style / Youth</span>
+      </div>
+
+      <div class="hero__dots" role="tablist" aria-label="Model slides">
+        <button class="hero__dot is-active" aria-label="Show X1"></button>
+        <button class="hero__dot" aria-label="Show X5"></button>
+        <button class="hero__dot" aria-label="Show X9"></button>
+        <button class="hero__dot" aria-label="Show C3"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll-cue"><span class="bar" aria-hidden="true"></span> Scroll</div>
+</section>
+
+<!-- ============ MODEL SHOWCASE ============ -->
+<!-- PLACEHOLDER CONTENT — TO BE REPLACED WITH REAL VOSENBON SPECIFICATIONS.
+     Model names, taglines and all stat figures below are invented for demo purposes. -->
+<section class="section" id="showcase">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Range</span>
+      <h2>Four Bikes. One Mission.</h2>
+      <p>Every VOSENBON is built around the same idea: less running cost, more ride. Pick the model that fits your day.</p>
+    </div>
+
+    <div class="showcase-tabs reveal">
+      <button class="showcase-tab is-active" data-target="model-x1">X1</button>
+      <button class="showcase-tab" data-target="model-x5">X5</button>
+      <button class="showcase-tab" data-target="model-x9">X9</button>
+      <button class="showcase-tab" data-target="model-c3">C3</button>
+    </div>
+
+    <div class="showcase-panel is-active" id="model-x1">
+      <div class="showcase-panel__art">
+        <img src="assets/images/svg/bikes/vosenbon-x1.svg" alt="VOSENBON X1 electric scooter illustration" loading="lazy" width="480" height="260" />
+      </div>
+      <div class="showcase-panel__copy">
+        <span class="showcase-panel__tagline">Entry Commuter</span>
+        <h3 class="showcase-panel__name">VOSENBON X1</h3>
+        <p class="showcase-panel__desc">Light, nimble and built for daily commuting — the easiest way to trade your petrol bill for a plug.</p>
+        <div class="stat-row">
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="65">0<span class="stat-chip__unit"> km/h</span></div><div class="stat-chip__label">Top Speed</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="80">0<span class="stat-chip__unit"> km</span></div><div class="stat-chip__label">Range / Charge</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="60">0<span class="stat-chip__unit">V / 26Ah</span></div><div class="stat-chip__label">Battery</div></div>
+        </div>
+        <div class="showcase-panel__actions">
+          <a href="#contact" class="btn btn--primary btn--sm">Schedule a Ride</a>
+          <a href="#features" class="btn btn--ghost btn--sm">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-panel" id="model-x5">
+      <div class="showcase-panel__art">
+        <img src="assets/images/svg/bikes/vosenbon-x5.svg" alt="VOSENBON X5 electric scooter illustration" loading="lazy" width="480" height="260" />
+      </div>
+      <div class="showcase-panel__copy">
+        <span class="showcase-panel__tagline">Mid-range City</span>
+        <h3 class="showcase-panel__name">VOSENBON X5</h3>
+        <p class="showcase-panel__desc">More range, more presence. Built for riders who cross the city daily and want headroom to spare.</p>
+        <div class="stat-row">
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="80">0<span class="stat-chip__unit"> km/h</span></div><div class="stat-chip__label">Top Speed</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="110">0<span class="stat-chip__unit"> km</span></div><div class="stat-chip__label">Range / Charge</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="72">0<span class="stat-chip__unit">V / 32Ah</span></div><div class="stat-chip__label">Battery</div></div>
+        </div>
+        <div class="showcase-panel__actions">
+          <a href="#contact" class="btn btn--primary btn--sm">Schedule a Ride</a>
+          <a href="#features" class="btn btn--ghost btn--sm">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-panel" id="model-x9">
+      <div class="showcase-panel__art">
+        <img src="assets/images/svg/bikes/vosenbon-x9.svg" alt="VOSENBON X9 flagship electric scooter illustration" loading="lazy" width="480" height="260" />
+      </div>
+      <div class="showcase-panel__copy">
+        <span class="showcase-panel__tagline">Flagship Performance</span>
+        <h3 class="showcase-panel__name">VOSENBON X9</h3>
+        <p class="showcase-panel__desc">The flagship. Highest top speed, longest range, and a stance built to be seen — for riders who want it all.</p>
+        <div class="stat-row">
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="100">0<span class="stat-chip__unit"> km/h</span></div><div class="stat-chip__label">Top Speed</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="120">0<span class="stat-chip__unit"> km</span></div><div class="stat-chip__label">Range / Charge</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="84">0<span class="stat-chip__unit">V / 38Ah</span></div><div class="stat-chip__label">Battery</div></div>
+        </div>
+        <div class="showcase-panel__actions">
+          <a href="#contact" class="btn btn--primary btn--sm">Schedule a Ride</a>
+          <a href="#features" class="btn btn--ghost btn--sm">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-panel" id="model-c3">
+      <div class="showcase-panel__art">
+        <img src="assets/images/svg/bikes/vosenbon-c3.svg" alt="VOSENBON C3 electric scooter illustration" loading="lazy" width="480" height="260" />
+      </div>
+      <div class="showcase-panel__copy">
+        <span class="showcase-panel__tagline">Style / Youth</span>
+        <h3 class="showcase-panel__name">VOSENBON C3</h3>
+        <p class="showcase-panel__desc">Retro round headlamp, compact frame, big attitude — designed for riders who want to stand out on campus and city streets alike.</p>
+        <div class="stat-row">
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="70">0<span class="stat-chip__unit"> km/h</span></div><div class="stat-chip__label">Top Speed</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="90">0<span class="stat-chip__unit"> km</span></div><div class="stat-chip__label">Range / Charge</div></div>
+          <div class="stat-chip"><div class="stat-chip__value" data-count-to="60">0<span class="stat-chip__unit">V / 28Ah</span></div><div class="stat-chip__label">Battery</div></div>
+        </div>
+        <div class="showcase-panel__actions">
+          <a href="#contact" class="btn btn--primary btn--sm">Schedule a Ride</a>
+          <a href="#features" class="btn btn--ghost btn--sm">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section section--dark" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Electric</span>
+      <h2>Built For Bangladesh's Roads</h2>
+      <p>Heat, humidity, monsoon traffic, unpredictable fuel prices — VOSENBON is engineered around the realities of daily riding here.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img class="feature-card__icon" src="assets/images/svg/icons/icon-charging.svg" alt="" loading="lazy" />
+        <h3>Fast Home Charging</h3>
+        <p>Plug into any standard socket at home — no dedicated charging station or extra wiring required.</p>
+      </div>
+      <div class="feature-card">
+        <img class="feature-card__icon" src="assets/images/svg/icons/icon-cost.svg" alt="" loading="lazy" />
+        <h3>Low Running Cost</h3>
+        <p>A full charge costs a fraction of a litre of petrol. Ride further for less, every single day.</p>
+      </div>
+      <div class="feature-card">
+        <img class="feature-card__icon" src="assets/images/svg/icons/icon-security.svg" alt="" loading="lazy" />
+        <h3>Smart Anti-Theft</h3>
+        <p>Motion-triggered alarm and remote immobiliser keep your VOSENBON where you parked it.</p>
+      </div>
+      <div class="feature-card">
+        <img class="feature-card__icon" src="assets/images/svg/icons/icon-weather.svg" alt="" loading="lazy" />
+        <h3>All-Weather Build</h3>
+        <p>Sealed electricals and rust-resistant frame rated for monsoon rides and summer heat alike.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section class="section" id="calculator">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Do The Math</span>
+      <h2>See Your Savings</h2>
+      <p>Slide to your daily riding distance and compare estimated monthly petrol cost against VOSENBON's electricity cost.</p>
+    </div>
+
+    <div class="calc reveal">
+      <div class="calc__inputs">
+        <div class="calc__label">Daily distance <output id="calc-distance-output">30 km</output></div>
+        <input type="range" min="5" max="120" value="30" step="5" id="calc-distance" class="calc__slider" aria-label="Daily distance in kilometres" />
+        <p class="calc__note">
+          Estimate only. Assumes a petrol bike at ~40 km/litre against petrol priced at ~৳125/litre,
+          and a VOSENBON averaging ~90 km per full charge at ~৳18/charge — placeholder figures,
+          to be replaced with confirmed local fuel and electricity rates.
+        </p>
+      </div>
+      <div class="calc__result">
+        <div class="calc__compare">
+          <div>
+            <div class="calc__compare-label">Petrol / month</div>
+            <div class="calc__compare-value is-old" id="calc-petrol-value">৳0</div>
+          </div>
+          <div>
+            <div class="calc__compare-label">VOSENBON / month</div>
+            <div class="calc__compare-value is-new" id="calc-electric-value">৳0</div>
+          </div>
+        </div>
+        <div class="calc__save">
+          <div class="calc__save-label">You save approximately</div>
+          <div class="calc__save-value" id="calc-savings-value">৳0 / month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEALERS ============ -->
+<!-- PLACEHOLDER DATA — showroom names, areas and phone numbers are samples only. -->
+<section class="section section--dark section--tight" id="dealers">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Find a Store</span>
+      <h2>Visit a Showroom</h2>
+      <p>Test ride before you buy. Sample showroom locations below — full network to be confirmed.</p>
+    </div>
+
+    <div class="dealer-grid">
+      <div class="dealer-card reveal">
+        <span class="dealer-card__badge">Sample Location</span>
+        <h3>VOSENBON Dhanmondi</h3>
+        <p>Road 8, Dhanmondi, Dhaka<br />Open 10am – 8pm, all week</p>
+        <a href="tel:+8801700000000">+880 1700-000000</a>
+      </div>
+      <div class="dealer-card reveal">
+        <span class="dealer-card__badge">Sample Location</span>
+        <h3>VOSENBON Chattogram</h3>
+        <p>GEC Circle, Chattogram<br />Open 10am – 8pm, all week</p>
+        <a href="tel:+8801700000001">+880 1700-000001</a>
+      </div>
+      <div class="dealer-card reveal">
+        <span class="dealer-card__badge">Sample Location</span>
+        <h3>VOSENBON Sylhet</h3>
+        <p>Zindabazar, Sylhet<br />Open 10am – 8pm, all week</p>
+        <a href="tel:+8801700000002">+880 1700-000002</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<!-- Sample quotes — not real customers. Replace before launch. -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Riders Speak</span>
+      <h2>What People Are Saying</h2>
+    </div>
+
+    <div class="testi-track reveal">
+      <div class="testi-card">
+        <p class="testi-card__quote">"Cut my monthly commute cost by more than half. Charges overnight, ready every morning."</p>
+        <div class="testi-card__meta">
+          <div class="testi-card__avatar" aria-hidden="true"></div>
+          <div><div class="testi-card__name">Rafiq H.</div><div class="testi-card__loc">Dhanmondi, Dhaka</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-card__quote">"Didn't expect an electric bike to feel this quick off the line. The X9 handles great."</p>
+        <div class="testi-card__meta">
+          <div class="testi-card__avatar" aria-hidden="true"></div>
+          <div><div class="testi-card__name">Nusrat J.</div><div class="testi-card__loc">Mirpur, Dhaka</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-card__quote">"No more waiting in petrol station queues. Plug in at home, done."</p>
+        <div class="testi-card__meta">
+          <div class="testi-card__avatar" aria-hidden="true"></div>
+          <div><div class="testi-card__name">Tanvir A.</div><div class="testi-card__loc">GEC Circle, Chattogram</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="testi-note">Sample testimonials for demo purposes — to be replaced with real customer quotes.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section--dark" id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2 style="margin-top:14px;font-size:clamp(28px,4vw,40px)">Schedule a Ride</h2>
+        <p style="color:var(--text-dim);margin-top:16px">Tell us which model interests you and we'll arrange a test ride at your nearest showroom.</p>
+
+        <form id="enquiry-form" class="contact-form" style="margin-top:32px" novalidate>
+          <div class="field">
+            <label for="f-name">Full Name</label>
+            <input type="text" id="f-name" name="name" required />
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone Number</label>
+            <input type="tel" id="f-phone" name="phone" required />
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="f-model">Model Interested In</label>
+            <select id="f-model" name="model">
+              <option value="X1">VOSENBON X1 — Entry Commuter</option>
+              <option value="X5">VOSENBON X5 — Mid-range City</option>
+              <option value="X9">VOSENBON X9 — Flagship Performance</option>
+              <option value="C3">VOSENBON C3 — Style / Youth</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="message"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Request a Ride</button>
+        </form>
+
+        <!-- No backend yet: this is a client-side confirmation only.
+             TODO — POST form data to the VOSENBON CRM API endpoint here instead. -->
+        <div class="form-success" id="form-success">
+          <h3>Thank You</h3>
+          <p>We've received your request and will contact you shortly to schedule your ride.</p>
+        </div>
+      </div>
+
+      <aside class="contact-aside reveal">
+        <h3>Showroom Network</h3>
+        <p>Sample contact details shown below — replace with real VOSENBON support lines before launch.</p>
+        <div class="contact-aside__row"><span>Sales Hotline</span><span>+880 1700-000000</span></div>
+        <div class="contact-aside__row"><span>Support Email</span><span>support@vosenbon.example</span></div>
+        <div class="contact-aside__row"><span>Hours</span><span>10am – 8pm daily</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="logo__mark">VOSEN<span style="color:var(--accent)">BON</span></span>
+        <p>Electric bikes engineered for Bangladesh's roads. Ride smarter, ride electric.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <a href="#showcase">Products</a>
+        <a href="#features">About</a>
+        <a href="#dealers">Service Support</a>
+        <a href="#dealers">Find a Store</a>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="#contact">Schedule a Ride</a>
+        <a href="#calculator">Cost Calculator</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="current-year">2026</span> VOSENBON. Demo site — placeholder content throughout.</span>
+      <span>Built for client presentation.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp placeholder number — replace 8801700000000 with the real VOSENBON WhatsApp number -->
+<a class="wa-fab" href="https://wa.me/8801700000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.4 3.9 3.4.5.2.9.4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- Lenis is not published on cdnjs; served from jsdelivr instead (same CDN-only, no-build approach) -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!-- PLACEHOLDER ILLUSTRATION — TO BE REPLACED WITH REAL PRODUCT PHOTOGRAPHY OF THE VOSENBON X5 -->
+<svg viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Line illustration of the VOSENBON X5 electric scooter">
+  <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="95" cy="210" r="46" />
+    <circle cx="385" cy="210" r="46" />
+    <circle cx="95" cy="210" r="9" />
+    <circle cx="385" cy="210" r="9" />
+    <path d="M95 210 L180 210 L230 100 L310 100" />
+    <path d="M310 100 L305 45" />
+    <path d="M282 42 L328 48" stroke-width="8" />
+    <path d="M180 210 L350 210 L385 210" />
+    <path d="M230 100 L235 165 L365 165 L385 210" />
+    <rect x="160" y="150" width="90" height="20" rx="6" opacity="0.7" />
+    <path d="M130 175 Q220 158 270 175" stroke-width="3" opacity="0.5" />
+  </g>
+  <circle cx="307" cy="46" r="7" fill="currentColor" />
+</svg>

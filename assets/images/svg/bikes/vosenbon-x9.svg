@@ -1,0 +1,19 @@
+<!-- PLACEHOLDER ILLUSTRATION — TO BE REPLACED WITH REAL PRODUCT PHOTOGRAPHY OF THE VOSENBON X9 (FLAGSHIP) -->
+<svg viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Line illustration of the VOSENBON X9 flagship electric scooter">
+  <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="90" cy="212" r="48" />
+    <circle cx="392" cy="212" r="48" />
+    <circle cx="90" cy="212" r="8" />
+    <circle cx="392" cy="212" r="8" />
+    <path d="M90 212 L160 212 L215 90 L320 85" />
+    <path d="M320 85 L340 35" />
+    <path d="M312 32 L362 40" stroke-width="8" />
+    <path d="M160 212 L365 212 L392 212" />
+    <path d="M215 90 L200 175 L380 175 L392 212" />
+    <path d="M230 130 L340 122" stroke-width="3" opacity="0.6" />
+    <path d="M110 195 L150 195" stroke-width="6" />
+    <path d="M330 195 L372 195" stroke-width="6" />
+  </g>
+  <circle cx="338" cy="33" r="7" fill="currentColor" />
+  <path d="M55 212 L20 212" stroke="currentColor" stroke-width="3" opacity="0.4" />
+</svg>
